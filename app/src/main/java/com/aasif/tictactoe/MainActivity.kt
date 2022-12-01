@@ -3,7 +3,6 @@ package com.aasif.tictactoe
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.aasif.tictactoe.databinding.ActivityMainBinding
 
@@ -42,9 +41,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialize() = binding.apply {
         buttonReset.setOnClickListener { gameReset() }
+        imageView0.setOnClickListener { playerTap(imageView0) }
+        imageView1.setOnClickListener { playerTap(imageView1) }
+        imageView2.setOnClickListener { playerTap(imageView2) }
+        imageView3.setOnClickListener { playerTap(imageView3) }
+        imageView4.setOnClickListener { playerTap(imageView4) }
+        imageView5.setOnClickListener { playerTap(imageView5) }
+        imageView6.setOnClickListener { playerTap(imageView6) }
+        imageView7.setOnClickListener { playerTap(imageView7) }
+        imageView8.setOnClickListener { playerTap(imageView8) }
     }
 
-    fun playerTap(view: View) {
+    private fun playerTap(view: View) {
         val img = view as ImageView
         val tappedImage = img.tag.toString().toInt()
         if (!gameActive) {
@@ -68,10 +76,13 @@ class MainActivity : AppCompatActivity() {
         for (winPosition in winPositions) {
             if (gameState[winPosition[0]] == gameState[winPosition[1]]
                 && gameState[winPosition[1]] == gameState[winPosition[2]]
-                && gameState[winPosition[0]] != 2) {
+                && gameState[winPosition[0]] != 2
+            ) {
                 // Somebody has won! - Find out who!
                 gameActive = false
-                val winnerStr = if (gameState[winPosition[0]] == 0) "X has won" else "O has won"
+                val winnerStr =
+                    if (gameState[winPosition[0]] == 0) getString(R.string.x_won)
+                    else getString(R.string.o_won)
                 // Update the status bar for winner announcement
                 winnerStr.also { binding.status.text = it }
             }

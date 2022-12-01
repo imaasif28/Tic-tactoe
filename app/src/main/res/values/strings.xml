@@ -7,4 +7,6 @@
     <string name="x_turn">X\'s Turn - Tap to play</string>
     <string name="draw">Match Draw</string>
     <string name="resetButton">Reset</string>
+    <string name="x_won">X has won</string>
+    <string name="o_won">O has won</string>
 </resources>
